@@ -67,12 +67,22 @@ class LinkedList:
 
 
     def remove_tail(self):
-        # TODO
-        pass
+        # empty list
+        if self.head is None:
+            return None
+        # LL with 1 element
+
+        # LL with 2+ elements
 
     def contains(self, value):
-        # TODO time permitting
-        pass
+        # Loop through LL until next pointer is None
+        current_node = self.head
+        while current_node is not None:
+            # if we find 'value'
+            if current_node.get_value() == value:
+                return True
+        return False
+
     def get_max(self):
         # TODO time permitting
         pass
