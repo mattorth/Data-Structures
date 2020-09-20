@@ -9,6 +9,10 @@ return elements in Last In First Out order.
    Make sure the Stack tests pass.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
+
+   An array is more easily implemented, as you can use the built in list methods to set up a
+   stack. A stack using linked lists requires you to set up the class and corresponding linked
+   list methods.
 """
 # array implementation
 # class Stack:
