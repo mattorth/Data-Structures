@@ -81,11 +81,11 @@ class LinkedList:
         else:
             ret_value = self.tail.get_value()
             current_node = self.head
-            while current_node.get_next_node() is not None:
-                if current_node.get_next_node() == self.tail:
-                    self.tail = current_node
-                    self.tail.set_next_node(None)
-            return ret_value
+            while current_node.get_next_node() is not self.tail:
+                current_node = current_node.get_next_node()
+            current_node.set_next_node(None)
+            self.tail = current_node
+        return ret_value
 
     def contains(self, value):
         # Loop through LL until next pointer is None
