@@ -9,6 +9,9 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+from queue import Queue
+from stack import Stack
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -81,17 +84,51 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
+        # Recursive - place your print statement in between recursive calls
+        # that explore left and right subtrees
+
+        # iterative
+        if self.left:
+            self.left.in_order_print()
+        print(self.value)
+        if self.right:
+            self.right.in_order_print()
         pass
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
-        pass
+        # breadth first using queue
+        # iterative
+        bft_queue = Queue()
+        bft_queue.enqueue(self)
+        while bft_queue.__len__() > 0:
+            current_node = bft_queue.dequeue()
+            # and left child
+            if current_node.left:
+                bft_queue.enqueue(current_node.left)
+            # add right child
+            if current_node.right:
+                bft_queue.enqueue(current_node.right)
+            # dequeue root
+            print(current_node.value)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):
-        pass
+        # create a stack to keep track of nodes we are processing
+        # push root into stack
+        dft_stack = Stack()
+        dft_stack.push(self)
+
+        while dft_stack.__len__() > 0:
+            # push when we start, pop when a node is done
+            current_node = dft_stack.pop()
+            print(current_node.value)
+            if current_node.left:
+                dft_stack.push(current_node.left)
+            if current_node.right:
+                dft_stack.push(current_node.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
